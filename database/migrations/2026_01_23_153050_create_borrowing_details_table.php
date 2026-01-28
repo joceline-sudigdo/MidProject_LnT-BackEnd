@@ -16,13 +16,13 @@ return new class extends Migration
 
             $table->foreignId('borrowing_id')
                   ->constrained('borrowings')
-                  ->onDelete('cascade');
+                  ->cascadeOnDelete();
 
             $table->foreignId('book_id')
                   ->constrained('books')
-                  ->onDelete('cascade');
+                  ->restrictOnDelete();
 
-            $table->integer('quantity')->default(1)->nullable();
+            $table->integer('quantity')->default(1);
             
             $table->timestamps();
         });
