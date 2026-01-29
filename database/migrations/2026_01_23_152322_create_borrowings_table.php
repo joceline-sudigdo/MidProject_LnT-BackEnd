@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,15 +14,15 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('member_id')
-                  ->constrained('members')
-                  ->cascadeOnDelete();
+                ->constrained('members')
+                ->restrictOnDelete();
 
             $table->date('borrow_date');
             $table->date('return_date')->nullable();
 
             $table->enum('status', ['borrowed', 'returned'])
-                  ->default('borrowed');
-            
+                ->default('borrowed');
+
             $table->timestamps();
         });
     }
